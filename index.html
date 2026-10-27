@@ -131,7 +131,7 @@ function topic(sid,aid,bid,gid,p){
   return `<p class="crumb"><a href="#/">Início</a> / <a href="#/${sid}">${s.name}</a> / <a href="#/${sid}/${aid}">${a.name}</a> / <a href="#/${sid}/${aid}/${bid}">${b.name}</a> / ${g.name}</p>
   <div class="layout"><aside class="index" aria-label="Neste assunto"><h3>${b.name}</h3>${b.groups.map(x=>`<a href="#/${sid}/${aid}/${bid}/${x.id}" ${x===g?'aria-current="true"':''}>${x.name}</a>`).join('')}</aside>
   <div><div class="head"><div><span class="chip">${a.name} · ${b.name}</span><h1>${g.name}</h1></div><button class="btn" id="cp">Copiar link</button></div>
-  <div class="screen"><video id="vid" controls preload="metadata" poster="${poster(v)}" src="videos/${v.f}"></video></div>
+  <div class="screen"><video id="vid" controls preload="metadata" poster="${poster(v)}" src="${new URL('videos/'+v.f, document.baseURI).href}"></video></div>
   ${g.videos.length>1?`<div class="tabs" role="tablist" aria-label="Partes do procedimento">${g.videos.map((x,k)=>`<a class="tab" role="tab" href="${href({s,a,b,g},k+1)}" aria-selected="${k===i}">Parte ${k+1}</a>`).join('')}</div><p class="sub">Parte ${i+1} de ${g.videos.length} · ${fmt(v.d)}</p>`:`<p class="sub" style="margin-top:12px">${fmt(v.d)}</p>`}
   ${rel.length?`<h2 class="t" style="font-size:24px;margin-top:32px">Outros assuntos em ${b.name}</h2><div style="margin-top:14px">${rel.map(x=>`<a class="res" href="#/${sid}/${aid}/${bid}/${x.id}"><img loading="lazy" src="${poster(x.videos[0])}" alt=""><span><b>${x.name}</b><small>${nv(x)} · ${dur(x)}</small></span></a>`).join('')}</div>`:''}</div></div>`;
 }
