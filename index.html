@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Academia ABC · Central de procedimentos</title>
+<link rel="icon" href="img/logo-abc.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--blue:#00b7e6;--blue-d:#007da1;--navy:#07283b;--ink:#10303f;--mute:#56717e;--tint:#e6f8fd;--line:#d3e6ee;--bg:#f5fbfd;--card:#fff;--r:26px}
+[data-theme="dark"]{--ink:#e4f3f8;--mute:#8fb0bd;--tint:#0d3347;--line:#1b4258;--bg:#061a26;--card:#0a2635;--blue-d:#4cd2f5}}
+*{box-sizing:border-box}
+body{margin:0;font:400 16px/1.55 Figtree,system-ui,sans-serif;color:var(--ink);background:var(--bg)}
+h1,h2,h3{font-family:'Bricolage Grotesque',Figtree,sans-serif;line-height:1.12;margin:0}
+button,a{font:inherit;color:inherit}button{cursor:pointer}a{text-decoration:none}
+:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+header{background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+.top{max-width:1240px;margin:auto;padding:12px clamp(16px,4vw,48px);display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px}.brand img{width:clamp(210px,28vw,340px);height:auto;display:block;object-fit:contain}
+.brand b{font:800 19px 'Bricolage Grotesque'}.brand small{display:block;color:var(--mute);font-size:12px;margin-top:2px}
+.sectors{display:flex;gap:6px;flex-wrap:wrap}
+.theme-toggle{margin-left:auto;display:inline-flex;align-items:center;gap:8px;border:1.5px solid var(--line);background:var(--tint);color:var(--ink);border-radius:99px;padding:9px 15px;font-weight:600;white-space:nowrap}.theme-toggle:hover{border-color:var(--blue)}
+.pill{border:0;background:none;padding:9px 18px;border-radius:99px;font-weight:600;color:var(--mute)}
+.pill:hover{background:var(--tint)}.pill[aria-current=true]{background:var(--blue);color:#04202e}
+main{max-width:1240px;margin:auto;padding:32px clamp(16px,4vw,48px) 72px}
+.hero{background:var(--navy);color:#fff;border-radius:var(--r) var(--r) var(--r) 90px;padding:clamp(26px,5vw,56px);position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-50px;top:-50px;width:210px;height:210px;background:var(--blue);border-radius:0 0 0 210px}
+.hero h1{font-size:clamp(30px,4.6vw,52px);font-weight:800;max-width:17ch;position:relative;z-index:1}
+.hero p{color:#b9dbe8;max-width:54ch;margin:14px 0 22px;position:relative;z-index:1}
+.sbox{position:relative;z-index:1;max-width:560px}
+.sbox input{width:100%;padding:16px 22px;border-radius:99px;border:0;font:inherit;font-size:17px;color:#10303f;background:#fff}
+h2.t{font-size:clamp(24px,3vw,34px);font-weight:800;margin:44px 0 6px}
+.sub{color:var(--mute);margin:0 0 18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:18px}
+.card{display:block;background:var(--card);border:1.5px solid var(--line);border-radius:var(--r) var(--r) var(--r) 8px;overflow:hidden}
+.card:hover{border-color:var(--blue)}
+.card img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;background:var(--tint)}
+.card div{padding:16px 18px 18px}.card h3{font-size:19px;font-weight:600}
+.card small{color:var(--mute);display:block;margin-top:4px}
+.chip{display:inline-block;background:var(--tint);color:var(--blue-d);font-size:13px;font-weight:600;padding:3px 12px;border-radius:99px;margin-bottom:8px}
+.crumb{color:var(--mute);font-size:14px;margin:0 0 16px}.crumb a{text-decoration:underline}
+.layout{display:grid;grid-template-columns:260px 1fr;gap:32px;align-items:start}
+.index{position:sticky;top:96px;display:flex;flex-direction:column;gap:2px}
+.index h3{font-size:14px;color:var(--mute);margin:14px 12px 4px}
+.index a{padding:8px 14px;border-radius:99px;font-weight:500}.index a:hover{background:var(--tint)}
+.index a[aria-current=true]{background:var(--tint);color:var(--blue-d);font-weight:600;box-shadow:inset 4px 0 0 var(--blue)}
+.screen{background:#000;border-radius:var(--r);overflow:hidden;aspect-ratio:16/9}
+video{width:100%;height:100%;display:block}
+.head{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:end;margin:6px 0 20px}
+.head h1{font-size:clamp(26px,3.4vw,40px);font-weight:800}
+.btn{border:0;background:var(--tint);color:var(--ink);font-weight:600;padding:10px 20px;border-radius:99px}.btn:hover{background:var(--line)}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:18px 0 12px}
+.tab{border:1.5px solid var(--line);background:var(--card);border-radius:99px;padding:8px 18px;font-weight:600}
+.tab[aria-selected=true]{background:var(--blue);border-color:var(--blue);color:#04202e}
+.res{display:flex;gap:14px;align-items:center;padding:10px;border-radius:18px;border:1.5px solid var(--line);background:var(--card);margin-bottom:10px}
+.res:hover{border-color:var(--blue)}.res img{width:120px;aspect-ratio:16/9;object-fit:cover;border-radius:12px}
+.res b{display:block;font-weight:600}.res small{color:var(--mute)}
+.empty{color:var(--mute);padding:20px 0}
+.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:var(--navy);color:#fff;padding:10px 22px;border-radius:99px;opacity:0;transition:opacity .2s;pointer-events:none}.toast.on{opacity:1}
+@media(max-width:860px){.layout{grid-template-columns:1fr}.index{position:static;flex-direction:row;flex-wrap:wrap}.index h3{width:100%}.sectors{margin-left:0}}
+.dd{position:relative}
+.dd>.pill{display:inline-block}
+.panelmenu{position:absolute;left:0;top:100%;min-width:200px;background:var(--card);border:1.5px solid var(--line);border-radius:22px 22px 22px 6px;padding:12px;box-shadow:0 14px 40px rgba(7,40,59,.18);opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity .15s,transform .15s,visibility .15s}
+.dd::after{content:"";position:absolute;left:0;right:0;top:100%;height:12px}
+.dd:hover .panelmenu,.dd:focus-within .panelmenu{opacity:1;visibility:visible;transform:none}
+.panelmenu p{margin:4px 12px 8px;color:var(--mute);font-size:13px}
+.panelmenu a{display:block;padding:12px 14px;border-radius:16px}
+.panelmenu a:hover,.panelmenu a:focus-visible{background:var(--tint)}
+.panelmenu b{display:block;font-weight:600}.panelmenu small{color:var(--mute)}
+
+</style>
+</head>
+<body>
+<header><div class="top">
+  <a class="brand" href="#/" aria-label="Academia ABC, início"><img src="img/logo-abc.png" alt="ABC"></a>
+  <nav class="sectors" id="sectors" aria-label="Setores"></nav>
+  <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Alternar entre modo claro e escuro" aria-pressed="false"><span id="theme-icon" aria-hidden="true">☾</span><span id="theme-label">Modo escuro</span></button>
+</div></header>
+<main id="main"></main>
+<div class="toast" id="toast">Link copiado</div>
+<script src="video-config.js"></script>
+<script>
+const themeButton=document.getElementById('theme-toggle');
+function setTheme(mode){
+ document.documentElement.setAttribute('data-theme',mode);
+ themeButton.setAttribute('aria-pressed',String(mode==='dark'));
+ document.getElementById('theme-icon').textContent=mode==='dark'?'☀':'☾';
+ document.getElementById('theme-label').textContent=mode==='dark'?'Modo claro':'Modo escuro';
+ try{localStorage.setItem('academia-abc-theme',mode)}catch(e){}
+}
+let savedTheme='light';try{savedTheme=localStorage.getItem('academia-abc-theme')||'light'}catch(e){}
+setTheme(savedTheme==='dark'?'dark':'light');
+themeButton.addEventListener('click',()=>setTheme(document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark'));
+// Configure o endereço HTTPS da biblioteca de vídeos em video-config.js.
+// A reprodução permanece dentro da Academia ABC.
+const VIDEO_BASE=(window.ABC_VIDEO_BASE_URL||'videos/').replace(/\/?$/, '/');
+const videoUrl=file=>VIDEO_BASE+encodeURIComponent(file);
+const DATA=[{"id":"comercial","name":"Comercial","areas":[{"id":"vendas","name":"Vendas","subs":[{"id":"contrato-de-representacao","name":"Contrato de Representação","groups":[{"id":"elaboracao-de-contrato-de-representacao","name":"Elaboração de Contrato de Representação","videos":[{"t":"Elaboração de Contrato de Representação","f":"elaboracao-de-contrato-de-representacao.mp4","d":129,"p":1}]}]},{"id":"atendimento","name":"Atendimento","groups":[{"id":"cadastro-prospect","name":"Cadastro Prospect","videos":[{"t":"Cadastro Prospect 1.1","f":"cadastro-prospect-1-1.mp4","d":124,"p":1},{"t":"Cadastro Prospect 1.2","f":"cadastro-prospect-1-2.mp4","d":103,"p":2},{"t":"Cadastro Prospect 1.3","f":"cadastro-prospect-1-3.mp4","d":89,"p":3}]},{"id":"baixa-de-art","name":"Baixa de ART","videos":[{"t":"Como Executar Download de ART Registrada no CREA 1.1","f":"como-executar-download-de-art-registrada-no-crea-1-1.mp4","d":498,"p":1}]},{"id":"elaboracao-de-art","name":"Elaboração de ART","videos":[{"t":"Como elaborar uma ART - 1.1","f":"como-elaborar-uma-art-1-1.mp4","d":168,"p":1},{"t":"Como elaborar uma ART - 1.2","f":"como-elaborar-uma-art-1-2.mp4","d":200,"p":2},{"t":"Como elaborar uma ART - 1.3","f":"como-elaborar-uma-art-1-3.mp4","d":569,"p":3},{"t":"Como elaborar uma ART - 1.4","f":"como-elaborar-uma-art-1-4.mp4","d":317,"p":4},{"t":"Como elaborar uma ART - 1.5","f":"como-elaborar-uma-art-1-5.mp4","d":155,"p":5}]}]},{"id":"cobrancas","name":"Cobranças","groups":[{"id":"convite-abc-protege","name":"Convite ABC Protege","videos":[{"t":"Passo a Passo Convite ABC Protege","f":"passo-a-passo-convite-abc-protege.mp4","d":379,"p":1}]},{"id":"resgate-de-cliente","name":"Resgate de Cliente","videos":[{"t":"Passo a Passo Resgate de Cliente","f":"passo-a-passo-resgate-de-cliente.mp4","d":413,"p":1}]},{"id":"cobranca-de-propostas","name":"Cobrança de propostas","videos":[{"t":"Passo a passo Cobrança de propostas","f":"passo-a-passo-cobranca-de-propostas.mp4","d":444,"p":1}]},{"id":"oferta-de-orcamento","name":"Oferta de orçamento","videos":[{"t":"Passo a passo Oferta de orçamento","f":"passo-a-passo-oferta-de-orcamento.mp4","d":575,"p":1}]}]}]},{"id":"medicao","name":"Medição","subs":[{"id":"clientes-resgate","name":"Clientes resgate","groups":[{"id":"passo-a-passo-clientes-resgate","name":"Passo a passo de clientes resgate","videos":[{"t":"Passo a passo Clientes Resgate","f":"passo-a-passo-clientes-resgate.mp4","d":137,"p":1}]}]}]}]},{"id":"compras","name":"Compras","areas":[{"id":"procedimentos","name":"Procedimentos","subs":[{"id":"passo-a-passo","name":"Passo a passo","groups":[{"id":"compras-procedimento-0-compras-lancamento-nf-combustivel-m","name":"Lançamento Nf Combustivel","videos":[{"t":"Lançamento Nf Combustivel","f":"compras-lancamento-nf-combustivel-mp4.mp4","d":0,"p":1}]}]}]}]},{"id":"financeiro","name":"Financeiro","areas":[{"id":"contas-a-pagar","name":"Contas a pagar","subs":[{"id":"passo-a-passo","name":"Passo a passo","groups":[{"id":"financeiro-procedimento-0-financeiro-passo-a-passo-programaca","name":"Passo A Passo Programação De Pagamento Bonificação Trimestral — Parte 01","videos":[{"t":"Passo A Passo Programação De Pagamento Bonificação Trimestral — Parte 01","f":"financeiro-passo-a-passo-programacao-de-pagamento-bonificacao-trimestral-parte-01-mp4.mp4","d":0,"p":1}]}]}]},{"id":"fiscal","name":"Fiscal","subs":[{"id":"passo-a-passo","name":"Passo a passo","groups":[{"id":"financeiro-procedimento-0-financeiro-manifesto-eletronico-mp4","name":"Manifesto Eletronico","videos":[{"t":"Manifesto Eletronico","f":"financeiro-manifesto-eletronico-mp4.mp4","d":0,"p":1}]},{"id":"financeiro-procedimento-1-financeiro-nota-de-material-mp4-mp4","name":"Nota De Material","videos":[{"t":"Nota De Material","f":"financeiro-nota-de-material-mp4.mp4","d":0,"p":1}]},{"id":"financeiro-procedimento-2-financeiro-nota-de-servico-medicao-","name":"Nota De Serviço — Medição","videos":[{"t":"Nota De Serviço — Medição","f":"financeiro-nota-de-servico-medicao-mp4.mp4","d":0,"p":1}]},{"id":"financeiro-procedimento-3-financeiro-nota-de-servico-para-rai","name":"Nota De Serviço — Para Raios","videos":[{"t":"Nota De Serviço — Para Raios","f":"financeiro-nota-de-servico-para-raios-mp4.mp4","d":0,"p":1}]}]}]}]}];
+const $=s=>document.querySelector(s);
+const flow=['cadastro-prospect','elaboracao-de-art','baixa-de-art'];
+DATA.forEach(s=>s.areas.forEach(a=>a.subs.forEach(b=>{if(b.id==='atendimento')b.groups.sort((x,y)=>flow.indexOf(x.id)-flow.indexOf(y.id))})));
+const fmt=s=>s===0?"Vídeo":Math.floor(s/60)+':'+String(s%60).padStart(2,'0');
+const poster=v=>v.f.startsWith('compras-')||v.f.startsWith('financeiro-')?'img/video-thumb.svg':'posters/'+v.f.replace('.mp4','.jpg');
+const dur=g=>fmt(g.videos.reduce((a,v)=>a+v.d,0));
+const nv=g=>g.videos.length+(g.videos.length>1?' vídeos':' vídeo');
+const all=DATA.flatMap(s=>s.areas.flatMap(a=>a.subs.flatMap(b=>b.groups.map(g=>({s,a,b,g})))));
+const href=(x,p)=>`#/${x.s.id}/${x.a.id}/${x.b.id}/${x.g.id}${p?'/'+p:''}`;
+const card=x=>`<a class="card" href="${href(x)}"><img loading="lazy" src="${poster(x.g.videos[0])}" alt=""><div><span class="chip">${x.a.name} · ${x.b.name}</span><h3>${x.g.name}</h3><small>${nv(x.g)} · ${dur(x.g)}</small></div></a>`;
+const nav=s=>$('#sectors').innerHTML=DATA.map(d=>`<div class="dd"><a class="pill" href="#/${d.id}" aria-haspopup="true" ${d.id===s?'aria-current="true"':''}>${d.name} <span aria-hidden="true">▾</span></a>
+  <div class="panelmenu" role="menu">${d.areas.map(a=>`<a role="menuitem" href="#/${d.id}/${a.id}"><b>${a.name}</b></a>`).join('')}</div></div>`).join('');
+function home(){
+  nav('');
+  return `<section class="hero"><h1>Tudo o que a ABC faz, em um só lugar</h1><p>Procedimentos gravados em vídeo, separados por setor e assunto. Busque o que precisa fazer ou navegue pelos setores.</p>
+  <div class="sbox"><input id="q" type="search" placeholder="Ex.: cadastrar prospect, elaborar ART, cobrança de propostas" aria-label="Buscar procedimento"></div></section>
+  <div id="results"></div><div id="browse">
+  <h2 class="t">Setores</h2><p class="sub">Passe o mouse sobre o setor no menu ou clique no cartão.</p>
+  <div class="grid">${DATA.map(s=>{const gs=all.filter(x=>x.s===s);return `<a class="card" href="#/${s.id}"><img src="${poster(gs[0].g.videos[0])}" alt=""><div><h3>${s.name}</h3><small>${s.areas.length} ${s.areas.length>1?"áreas":"área"} · ${gs.length} assuntos · ${gs.reduce((n,x)=>n+x.g.videos.length,0)} vídeos</small></div></a>`}).join('')}</div>
+  <h2 class="t">Todos os procedimentos</h2><p class="sub">Acesso direto a cada assunto.</p><div class="grid">${all.map(card).join('')}</div></div>`;
+}
+function listing(sid,aid,bid){
+  const s=DATA.find(d=>d.id===sid);if(!s)return notFound();nav(sid);
+  const areas=aid?s.areas.filter(a=>a.id===aid):s.areas; if(!areas.length)return notFound();
+  const ar=areas.length===1?areas[0]:null;
+  const crumb=`<a href="#/">Início</a> / ${aid?`<a href="#/${sid}">${s.name}</a> / ${ar.name}`:s.name}`;
+  return `<p class="crumb">${crumb}</p><div class="head"><h1>${aid?ar.name:s.name}</h1></div>
+  <div class="layout"><aside class="index" aria-label="Áreas e subáreas">
+  ${s.areas.map(a=>`<h3>${a.name}</h3>${a.subs.map(b=>`<a href="#/${sid}/${a.id}/${b.id}" ${bid===b.id&&aid===a.id?'aria-current="true"':''}>${b.name}</a>`).join('')}`).join('')}</aside>
+  <div>${areas.map(a=>a.subs.filter(b=>!bid||b.id===bid).map(b=>`<h2 class="t" style="margin-top:0">${b.name}</h2><p class="sub">${a.name} · ${b.groups.length} ${b.groups.length>1?'assuntos':'assunto'}</p><div class="grid" style="margin-bottom:36px">${b.groups.map(g=>card({s,a,b,g})).join('')}</div>`).join('')).join('')}</div></div>`;
+}
+function topic(sid,aid,bid,gid,p){
+  const s=DATA.find(d=>d.id===sid),a=s&&s.areas.find(x=>x.id===aid),b=a&&a.subs.find(x=>x.id===bid),g=b&&b.groups.find(x=>x.id===gid);
+  if(!g)return notFound();nav(sid);
+  const i=Math.max(0,Math.min(g.videos.length-1,(+p||1)-1)),v=g.videos[i];
+  const rel=b.groups.filter(x=>x!==g);
+  return `<p class="crumb"><a href="#/">Início</a> / <a href="#/${sid}">${s.name}</a> / <a href="#/${sid}/${aid}">${a.name}</a> / <a href="#/${sid}/${aid}/${bid}">${b.name}</a> / ${g.name}</p>
+  <div class="layout"><aside class="index" aria-label="Neste assunto"><h3>${b.name}</h3>${b.groups.map(x=>`<a href="#/${sid}/${aid}/${bid}/${x.id}" ${x===g?'aria-current="true"':''}>${x.name}</a>`).join('')}</aside>
+  <div><div class="head"><div><span class="chip">${a.name} · ${b.name}</span><h1>${g.name}</h1></div><button class="btn" id="cp">Copiar link</button></div>
+  <div class="screen"><video id="vid" controls preload="metadata" poster="${poster(v)}" src="${videoUrl(v.f)}"></video></div>
+  ${g.videos.length>1?`<div class="tabs" role="tablist" aria-label="Partes do procedimento">${g.videos.map((x,k)=>`<a class="tab" role="tab" href="${href({s,a,b,g},k+1)}" aria-selected="${k===i}">Parte ${k+1}</a>`).join('')}</div><p class="sub">Parte ${i+1} de ${g.videos.length} · ${fmt(v.d)}</p>`:`<p class="sub" style="margin-top:12px">${fmt(v.d)}</p>`}
+  ${rel.length?`<h2 class="t" style="font-size:24px;margin-top:32px">Outros assuntos em ${b.name}</h2><div style="margin-top:14px">${rel.map(x=>`<a class="res" href="#/${sid}/${aid}/${bid}/${x.id}"><img loading="lazy" src="${poster(x.videos[0])}" alt=""><span><b>${x.name}</b><small>${nv(x)} · ${dur(x)}</small></span></a>`).join('')}</div>`:''}</div></div>`;
+}
+const notFound=()=>{nav('');return `<h1>Página não encontrada</h1><p class="empty">Volte ao <a href="#/" style="text-decoration:underline">início</a> e busque o procedimento.</p>`};
+function route(){
+  const [,s,a,b,g,p]=location.hash.split('/');
+  $('#main').innerHTML=!s?home():!g?listing(s,a,b):topic(s,a,b,g,p);
+  window.scrollTo(0,0);
+  const q=$('#q');if(q)q.oninput=()=>{
+    const t=q.value.trim().toLowerCase(),r=$('#results');$('#browse').hidden=!!t;
+    r.innerHTML=!t?'':`<h2 class="t">Resultados</h2>`+((m=>m.length?`<div style="margin-top:14px">${m.map(x=>`<a class="res" href="${href(x)}"><img src="${poster(x.g.videos[0])}" alt=""><span><b>${x.g.name}</b><small>${x.s.name} / ${x.a.name} / ${x.b.name} · ${nv(x.g)}</small></span></a>`).join('')}</div>`:`<p class="empty">Nada encontrado para "${q.value}". Tente "ART", "prospect" ou "cobrança".</p>`)(all.filter(x=>(x.g.name+' '+x.b.name+' '+x.a.name+' '+x.s.name+' '+x.g.videos.map(v=>v.t).join(' ')).toLowerCase().includes(t))));
+  };
+  const cp=$('#cp');if(cp)cp.onclick=()=>{const u=location.href;(navigator.clipboard?navigator.clipboard.writeText(u):Promise.reject()).catch(()=>{}).finally(()=>{const t=$('#toast');t.classList.add('on');setTimeout(()=>t.classList.remove('on'),1600)})};
+}
+addEventListener('hashchange',route);route();
+</script>
+</body>
+</html>
